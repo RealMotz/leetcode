@@ -1,7 +1,8 @@
-using code.DataStructures;
-
 namespace code.Algorithms
 {
+    using System.Collections.Generic;
+    using code.DataStructures;
+
     public class Recursion
     {
         // Excercise # 1
