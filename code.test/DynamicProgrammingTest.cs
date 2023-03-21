@@ -1,7 +1,8 @@
-using code.Algorithms;
-
 namespace code.test
 {
+    using System.Collections.Generic;
+    using code.Algorithms;
+
     public class DynamicProgrammingTest
     {
         [Test]
