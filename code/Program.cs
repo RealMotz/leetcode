@@ -1,4 +1,5 @@
-﻿using code.Algorithms;
+﻿using System.Diagnostics;
+using code.Algorithms;
 using code.DataStructures;
 
 class Program {
@@ -11,7 +12,19 @@ class Program {
         //     Console.Write($"{i}, ");
         // }
 
-        var recursion = new Recursion();
-        recursion.PascalTriangleRow(4);
+        // var recursion = new Recursion();
+        // var c = new char[] { 'h', 'o', 'l', 'a'};
+        // // recursion.ReverseString2(c, 0);
+        // int x = 0;
+        // Console.WriteLine(c[x++..c.Length]);
+        // Console.WriteLine(x);
+        // Console.WriteLine(c[c.Length..c.Length]);
+
+        var dynamic = new DynamicProgramming();
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.Start();
+        dynamic.HowSum(300, new List<int>() { 7, 14 }, new Dictionary<int, List<int>?>());
+        stopwatch.Stop();
+        Console.WriteLine("Elapsed Time: {0}", stopwatch.Elapsed);
     }
 }

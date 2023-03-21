@@ -5,10 +5,19 @@ namespace code.Algorithms
 
     public class Recursion
     {
+        private Dictionary<int,int> memo = new();
+
         // Excercise # 1
         public void ReverseString(char[] s)
         {
             ReverseStrHelper(s, 0);
+        }
+
+        public void ReverseString2(char[] s, int startIndex)
+        {
+            if(s.Length == 0) return;
+            Console.WriteLine(s[startIndex++]);
+            ReverseString2(s[startIndex..s.Length], startIndex);
         }
 
         private void ReverseStrHelper(char[] s, int index)
@@ -86,11 +95,21 @@ namespace code.Algorithms
         {
             if (i == 0 || j == 0) return 1;
             if (j == i) return 1;
-            if(memo.ContainsKey($"{i}{j}")) return memo[$"{i}{j}"];
+            if (memo.ContainsKey($"{i}{j}")) return memo[$"{i}{j}"];
 
             int result = CalculateRowNumbers(i - 1, j - 1, memo) + CalculateRowNumbers(i - 1, j, memo);
             memo[$"{i}{j}"] = result;
             return result;
+        }
+
+        public int ClimbStairs(int n)
+        {
+            if (n == 0) return 1;
+            if (n < 0) return 0;
+            if (memo.TryGetValue(n, out int value)) return value;
+
+            memo[n] = ClimbStairs(n - 1) + ClimbStairs(n - 2);
+            return memo[n];
         }
     }
 }
